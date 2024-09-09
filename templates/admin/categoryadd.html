@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="form-container">
+        <h2>Add New Category</h2>
+        <form action="{% url 'addcategory' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add New Category</button>
+        </form>
+    </div>
+</body>
+</html>

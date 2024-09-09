@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="form-container">
+        <h2>Add New User</h2>
+        <form action="{% url 'adduser' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p}}
+        
+            <button type="submit">Add User</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .main-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            color: #666;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 18px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-heading">
+            <h2>Admin Dashboard</h2>
+        </div>
+        <div class="section" id="user-management">
+            <h3>User Management</h3>
+            <p>Manage user accounts, roles, and permissions.</p>
+            <a href="{% url 'userdashboard' %}">User Dashboard</a>
+        </div>
+        <div class="section" id="product-management">
+            <h3>Product Management</h3>
+            <p>Manage products, inventory, and categories.</p>
+            <a href="{% url 'productdashboard' %}">Product Dashboard</a>
+        </div>
+        <div class="section" id="category-management">
+            <h3>Category Management</h3>
+            <p>Manage different categories releted to products </p>
+            <a href="{% url 'categorydashboard' %}">Category Dashboard</a>
+        </div>
+        <div class="section" id="order-management">
+            <h3>Cart Management</h3>
+            <p>View and manage customer orders and their statuses.</p>
+            <a href="{% url 'categorydashboard' %}">Cart Dashboard</a>
+            <!-- Link to the order management page -->
+        </div>
+        <div class="section" id="coupon-management">
+            <h3>Coupon Management</h3>
+            <p>Create and manage discount coupons for promotions.</p>
+            <!-- Link to the coupon management page -->
+        </div>
+    </div>
+</body>
+</html>
