@@ -150,6 +150,38 @@ def category_add(request):
 
     
 
+def category_delete(request,id):
+    
+    category = get_object_or_404(Category, id=id)
+    if request.method == 'POST':
+        category.delete()
+        return redirect('categorydashboard')
+    
+    return render(request, 'admin/categorydelete.html', {'category': category})
+
+    
+
+def category_edit(request,id):
+
+    category = get_object_or_404(Category, id=id)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, request.FILES, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('categorydashboard')
+    else:
+        form = CategoryForm(instance=category)
+    
+    return render(request, 'admin/categoryedit.html', {'form': form, 'category': category})
+
+
+
+
+
+
+    
+
+
 
 
 

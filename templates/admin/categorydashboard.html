@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Management</title>
+    <title>category Management</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -84,7 +84,6 @@
                     <th>ID</th>
                     <th>Category Name</th>
                     <th>Image</th>
-                    <th>Stock</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -100,9 +99,11 @@
                             No Image
                         {% endif %}
                     </td>
+                    
                     <td class="action-buttons">
-                       
-                    </td>
+                        <a href="{% url 'editcategory' category.id %}">Edit</a>
+                        <a href="{% url 'deletecategory' category.id %}">Delete</a>
+                    </td> 
                 </tr>
                 {% endfor %}
             </tbody>
