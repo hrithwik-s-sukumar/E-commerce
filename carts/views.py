@@ -11,8 +11,6 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
-
 def _cart_id(request):
 
     cart = request.session.session_key
@@ -98,7 +96,7 @@ def remove_cart_item(request,product_id):
     return redirect('cart')
 
 
-@login_required(login_url ='login')
+@login_required(login_url ='signin')
 def checkout_page(request):
 
     cart_items = None
