@@ -1,0 +1,1817 @@
+{% load static%}
+
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link"> English </a>
+		    
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link"> USD </a>
+		</li>
+    </ul>
+    <ul class="navbar-nav">
+		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+	</ul> <!-- list-inline //  -->
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="./" class="brand-wrap">
+			<img class="logo" src="{% static './images/logo.png'%}">
+		</a> <!-- brand-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Cricket Bats </a>
+				<a class="dropdown-item" href="#">Helmets</a>
+				<a class="dropdown-item" href="#">Gloves</a>
+				<a class="dropdown-item" href="#">Sunglasses </a>
+				<a class="dropdown-item" href="#">Jersey </a>
+				<a class="dropdown-item" href="#">Leg pads </a> 
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="{% url 'productlist' %}" class="btn btn-outline-primary">Products</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+
+					{% if user.id is None %}
+
+					<div class="widget-header">
+						<small class="title text-muted">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'signin' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register' %}"> Register</a>
+						</div>
+					</div>
+
+					{% else %}
+					<div class="widget-header">
+						<small class="title text-muted">Welcome {{ user.first_name}}</small>
+						<div> 
+							<a href="#">Dashboard</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'logout' %}"> Logout</a>
+						</div>
+					</div>
+					{% endif %}
+
+					<a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+
+
+</header> <!-- section-header.// -->
+
+
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-intro padding-y-sm">
+<div class="container">
+
+<div class="intro-banner-wrap">
+	<img src="{% static 'images/banners/cricket2.jpg' %}" class="img-fluid rounded">
+</div>
+
+</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm">
+<div class="container">
+
+<header class="section-heading">
+	<a href="{% url 'productlist' %}" class="btn btn-outline-primary float-right">See all</a>
+	<h3 class="section-title">Popular products</h3>
+</header><!-- sect-heading -->
+
+	
+<div class="row">
+	{% for product in products %}
+
+	<div class="col-md-3">
+		<div class="card card-product-grid">
+			<a href="{% url 'productdetail' product.id %}" class="img-wrap"> <img src="{{ product.image.url}}"> </a>
+			<figcaption class="info-wrap">
+				<a href="{% url 'productdetail' product.id %}" class="title">{{ product.product_name}}</a>
+				<div class="price mt-1">{{ product.price }}</div> <!-- price-wrap.// -->
+			</figcaption>
+		</div>
+	</div> <!-- col.// -->
+
+	{% endfor %}
+</div> <!-- row.// -->
+
+</div><!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->
+
+
+
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="section-footer border-top">
+	<div class="container">
+		<section class="footer-bottom border-top row">
+			<div class="col-md-2">
+				<p class="text-muted"> &copy 2019 Company name </p>
+			</div>
+			<div class="col-md-8 text-md-center">
+				<span  class="px-2">info@pixsellz.io</span>
+				<span  class="px-2">+879-332-9375</span>
+				<span  class="px-2">Street name 123, Avanue abc</span>
+			</div>
+			<div class="col-md-2 text-md-right text-muted">
+				<i class="fab fa-lg fa-cc-visa"></i>
+				<i class="fab fa-lg fa-cc-paypal"></i>
+				<i class="fab fa-lg fa-cc-mastercard"></i>
+			</div>
+		</section>
+	</div><!-- //container -->
+</footer>
+<!-- ========================= FOOTER END // ========================= -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+signin.html
+
+
+
+
+<!DOCTYPE HTML>
+
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Language </a>
+		    <ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">English</a></li>
+				<li><a class="dropdown-item" href="#">Arabic</a></li>
+				<li><a class="dropdown-item" href="#">Russian </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+			<ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">EUR</a></li>
+				<li><a class="dropdown-item" href="#">AED</a></li>
+				<li><a class="dropdown-item" href="#">RUBL </a></li>
+		    </ul>
+		</li>
+    </ul>
+    <ul class="navbar-nav">
+		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+	</ul> <!-- list-inline //  -->
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="./" class="brand-wrap">
+			<img class="logo" src="{% static 'images/logo.png' %}">
+		</a> <!-- brand-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
+				<a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
+				<a class="dropdown-item" href="#">Auto / Transportation</a>
+				<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
+				<a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
+				<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="./store.html" class="btn btn-outline-primary">Store</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					<div class="widget-header">
+						<small class="title text-muted">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'signin' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register' %}"> Register</a>
+						</div>
+					</div>
+					<a href="./cart.html" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">0</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+
+</header> <!-- section-header.// -->
+
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-conten padding-y" style="min-height:84vh">
+
+<!-- ============================ COMPONENT LOGIN   ================================= -->
+	<div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
+      <div class="card-body">
+      <h4 class="card-title mb-4">Sign in</h4>
+	  {% include "alert.html" %}
+	  <form action="{% url 'signin' %}" method ='POST'>
+		
+		{% csrf_token %}
+
+          <div class="form-group">
+			 <input type="email" class="form-control" placeholder="Email Address" name='email' >
+          </div> <!-- form-group// -->
+          <div class="form-group">
+			<input type="password" class="form-control" placeholder="Password" name='password' >
+          </div> <!-- form-group// -->
+          
+          <div class="form-group">
+          	<a href="#" class="float-right">Forgot password?</a> 
+           
+          </div> <!-- form-group form-check .// -->
+          <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+          </div> <!-- form-group// -->    
+      </form>
+      </div> <!-- card-body.// -->
+    </div> <!-- card .// -->
+
+     <p class="text-center mt-4">Don't have account? <a href="{% url 'register'%}">Sign up</a></p>
+     <br><br>
+<!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="section-footer border-top padding-y">
+	<div class="container">
+		<p class="float-md-right"> 
+			&copy Copyright 2019 All rights reserved
+		</p>
+		<p>
+			<a href="#">Terms and conditions</a>
+		</p>
+	</div><!-- //container -->
+</footer>
+<!-- ========================= FOOTER END // ========================= -->
+
+
+
+</body>
+</html>
+
+
+
+
+
+register.html
+
+
+<!DOCTYPE HTML>
+
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Language </a>
+		    <ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">English</a></li>
+				<li><a class="dropdown-item" href="#">Arabic</a></li>
+				<li><a class="dropdown-item" href="#">Russian </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+			<ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">EUR</a></li>
+				<li><a class="dropdown-item" href="#">AED</a></li>
+				<li><a class="dropdown-item" href="#">RUBL </a></li>
+		    </ul>
+		</li>
+    </ul>
+    <ul class="navbar-nav">
+		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+	</ul> <!-- list-inline //  -->
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="./" class="brand-wrap">
+			<img class="logo" src="{% static 'images/logo.png' %}">
+		</a> <!-- brand-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
+				<a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
+				<a class="dropdown-item" href="#">Auto / Transportation</a>
+				<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
+				<a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
+				<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="./store.html" class="btn btn-outline-primary">Store</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					<div class="widget-header">
+						<small class="title text-muted">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'signin' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register' %}"> Register</a>
+						</div>
+					</div>
+					<a href="./cart.html" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">0</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+
+</header> <!-- section-header.// -->
+
+
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+      <article class="card-body">
+		{% include 'alert.html'%}
+		<header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+		<form action="{% url 'register' %}" method ='POST'>
+			{% csrf_token %}
+			{% comment %} {{ form.as_p}} {% endcomment %}
+				<div class="form-row">
+					<div class="col form-group">
+						<label>First name</label>
+						{{ form.first_name }}
+					
+					</div> <!-- form-group end.// -->
+					<div class="col form-group">
+						<label>Last name</label>
+					  	{{ form.last_name }}
+					</div> <!-- form-group end.// -->
+
+				</div> <!-- form-row end.// -->
+				<div class="form-group">
+					<label>Email</label>
+					{{ form.email }}
+					
+				</div> <!-- form-group end.// -->
+			
+				 <div class="form-row">
+					<div class="form-group col-md-6">
+					  <label>Phone Number</label>
+					 {{ form.phone_number }}
+					</div> <!-- form-group end.// -->
+				
+				</div> <!-- form-row.// --> 
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Create password</label>
+					    {{ form.password}}
+					</div> <!-- form-group end.// --> 
+					<div class="form-group col-md-6">
+						<label>Repeat password</label>
+					    {{ form.confirm_password}}
+					</div> <!-- form-group end.// -->  
+				</div>
+			    <div class="form-group">
+			        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+			    </div> <!-- form-group// -->      
+			        {{ form.email.errors }}
+					{{ form.non_field_errors}}
+			</form>
+		</article><!-- card-body.// -->
+    </div> <!-- card .// -->
+    <p class="text-center mt-4">Have an account? <a href="{% url 'signin'%}">Log In</a></p>
+    <br><br>
+<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="section-footer border-top padding-y">
+	<div class="container">
+		<p class="float-md-right"> 
+			&copy Copyright 2019 All rights reserved
+		</p>
+		<p>
+			<a href="#">Terms and conditions</a>
+		</p>
+	</div><!-- //container -->
+</footer>
+<!-- ========================= FOOTER END // ========================= -->
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+productlist.html
+
+{% load static%}
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Language </a>
+		    <ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">English</a></li>
+				<li><a class="dropdown-item" href="#">Arabic</a></li>
+				<li><a class="dropdown-item" href="#">Russian </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+			<ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">EUR</a></li>
+				<li><a class="dropdown-item" href="#">AED</a></li>
+				<li><a class="dropdown-item" href="#">RUBL </a></li>
+		    </ul>
+		</li>
+    </ul>
+    <ul class="navbar-nav">
+		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+	</ul> <!-- list-inline //  -->
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="./" class="brand-wrap">
+			<img class="logo" src="{% static 'images/logo.png' %}">
+		</a> <!-- brand-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Cricket Bats </a>
+				<a class="dropdown-item" href="#">Helmets</a>
+				<a class="dropdown-item" href="#">Gloves</a>
+				<a class="dropdown-item" href="#">Sunglasses </a>
+				<a class="dropdown-item" href="#">Jersey </a>
+				<a class="dropdown-item" href="#">Leg pads </a> 
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="{% url 'productlist' %}" class="btn btn-outline-primary">Products</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					<div class="widget-header">
+						<small class="title text-muted">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'signin' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register' %}"> Register</a>
+						</div>
+					</div>
+					<a href="./cart.html" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">0</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+
+</header> <!-- section-header.// -->
+
+
+
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+<div class="container">
+	<h2 class="title-page">Our Store</h2>
+	
+</div> <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+<div class="container">
+
+<div class="row">
+	<aside class="col-md-3">
+		
+<div class="card">
+	<article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Categories</h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_1" >
+			<div class="card-body">
+				
+				<ul class="list-menu">
+				<li><a href="#">People  </a></li>
+				<li><a href="#">Watches </a></li>
+				<li><a href="#">Cinema  </a></li>
+				<li><a href="#">Clothes  </a></li>
+				<li><a href="#">Home items </a></li>
+				<li><a href="#">Animals</a></li>
+				<li><a href="#">People </a></li>
+				</ul>
+
+			</div> <!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group  .// -->
+	<article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Sizes </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_4" >
+			<div class="card-body">
+			  <label class="checkbox-btn">
+			    <input type="checkbox">
+			    <span class="btn btn-light"> XS </span>
+			  </label>
+
+			  <label class="checkbox-btn">
+			    <input type="checkbox">
+			    <span class="btn btn-light"> SM </span>
+			  </label>
+
+			  <label class="checkbox-btn">
+			    <input type="checkbox">
+			    <span class="btn btn-light"> LG </span>
+			  </label>
+
+			  <label class="checkbox-btn">
+			    <input type="checkbox">
+			    <span class="btn btn-light"> XXL </span>
+			  </label>
+		</div><!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group .// -->
+	
+	<article class="filter-group">
+		<header class="card-header">
+			<a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
+				<i class="icon-control fa fa-chevron-down"></i>
+				<h6 class="title">Price range </h6>
+			</a>
+		</header>
+		<div class="filter-content collapse show" id="collapse_3" >
+			<div class="card-body">
+				
+				<div class="form-row">
+				<div class="form-group col-md-6">
+				  <label>Min</label>
+				  <!-- <input class="form-control" placeholder="$0" type="number"> -->
+				  	<select class="mr-2 form-control">
+						<option value="0">$0</option>
+						<option value="50">$50</option>
+						<option value="100">$100</option>
+						<option value="150">$150</option>
+						<option value="200">$200</option>
+						<option value="500">$500</option>
+						<option value="1000">$1000</option>
+					</select>
+				</div>
+				<div class="form-group text-right col-md-6">
+				  <label>Max</label>
+				  	<select class="mr-2 form-control">
+						<option value="50">$50</option>
+						<option value="100">$100</option>
+						<option value="150">$150</option>
+						<option value="200">$200</option>
+						<option value="500">$500</option>
+						<option value="1000">$1000</option>
+						<option value="2000">$2000+</option>
+					</select>
+				</div>
+				</div> <!-- form-row.// -->
+				<button class="btn btn-block btn-primary">Apply</button>
+			</div><!-- card-body.// -->
+		</div>
+	</article> <!-- filter-group .// -->
+	
+</div> <!-- card.// -->
+
+	</aside> <!-- col.// -->
+	<main class="col-md-9">
+
+<header class="border-bottom mb-4 pb-3">
+		<div class="form-inline">
+			<span class="mr-md-auto"> <b>{{ product_count }}</b> Items found </span>
+			
+		</div>
+</header><!-- sect-heading -->
+
+<div class="row">
+	{% for product in products %}
+
+	<div class="col-md-4">
+		<figure class="card card-product-grid">
+			<div class="img-wrap"> 
+				
+				<img src="{{ product.image.url}}">
+				
+			</div> <!-- img-wrap.// -->
+			<figcaption class="info-wrap">
+				<div class="fix-height">
+					<a href="./product-detail.html" class="title">{{ product.product_name }}</a>
+					<div class="price-wrap mt-2">
+						<span class="price">${{ product.price }}</span>
+						
+					</div> <!-- price-wrap.// -->
+				</div>
+				<a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-success">Added to cart </a>
+			</figcaption>
+		</figure>
+	</div> <!-- col.// -->
+   {% endfor %}
+
+</div> <!-- row end.// -->
+
+
+<nav class="mt-4" aria-label="Page navigation sample">
+	 {% if products.has_other_pages %}
+
+  <ul class="pagination">
+
+	{% if products.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a></li>
+	{% else %}
+	  <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+	{% endif %}
+
+      {% for i in products.paginator.page_range %}
+
+	    {% if products.number == i %}
+
+          <li class="page-item active"><a class="page-link" href="{{ i }}"></a></li>
+	    {% else %}
+	     <li class="page-item active"><a class="page-link" href="?page={{i}}">{{ i }}</a></li>
+	    {% endif %}
+
+	  {% endfor%}
+	{% if products.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Next</a></li>
+	{% else %}
+	  <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+	{% endif%}
+
+  </ul>
+    {% endif %} 
+
+</nav>
+
+	</main> <!-- col.// -->
+
+</div>
+
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="section-footer border-top padding-y">
+	<div class="container">
+		<p class="float-md-right"> 
+			&copy Copyright 2019 All rights reserved
+		</p>
+		<p>
+			<a href="#">Terms and conditions</a>
+		</p>
+	</div><!-- //container -->
+</footer>
+<!-- ========================= FOOTER END // ========================= -->
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+productdetails.html
+
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Language </a>
+		    <ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">English</a></li>
+				<li><a class="dropdown-item" href="#">Arabic</a></li>
+				<li><a class="dropdown-item" href="#">Russian </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+			<ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">EUR</a></li>
+				<li><a class="dropdown-item" href="#">AED</a></li>
+				<li><a class="dropdown-item" href="#">RUBL </a></li>
+		    </ul>
+		</li>
+    </ul>
+    <ul class="navbar-nav">
+		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+	</ul> <!-- list-inline //  -->
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="./" class="brand-wrap">
+			<img class="logo" src="{% static 'images/logo.png' %}">
+		</a> <!-- brand-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
+				<a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
+				<a class="dropdown-item" href="#">Auto / Transportation</a>
+				<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
+				<a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
+				<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="./store.html" class="btn btn-outline-primary">Store</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					<div class="widget-header">
+						<small class="title text-muted">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'signin' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register' %}"> Register</a>
+						</div>
+					</div>
+					<a href="#" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">0</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+</header> <!-- section-header.// -->
+
+
+
+<section class="section-content padding-y bg">
+<div class="container">
+
+<!-- ============================ COMPONENT 1 ================================= -->
+<div class="card">
+	<div class="row no-gutters">
+		<aside class="col-md-6">
+<article class="gallery-wrap"> 
+	<div class="img-big-wrap">
+	   <a href="#"><img src="{{ product.image.url }}" alt="{{ product.product_name }}"></a>
+	</div> <!-- img-big-wrap.// -->
+	
+</article> <!-- gallery-wrap .end// -->
+		</aside>
+		<main class="col-md-6 border-left">
+<article class="content-body">
+
+<h2 class="title">{{ product.product_name }}</h2>
+
+<div class="mb-3"> 
+	<var class="price h4">{{ product.price }}</var> 
+</div> 
+
+<p>Description: {{ product.description }}</p>
+
+
+<hr>
+	<div class="row">
+		<div class="item-option-select">
+			<h6>Choose Color</h6>
+			<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
+			  <label class="btn btn-light">
+			    <input type="radio" name="radio_color"> Silver
+			  </label>
+			  <label class="btn btn-light">
+			    <input type="radio" name="radio_color" > Gray
+			  </label>
+			  <label class="btn btn-light active">
+			    <input type="radio" name="radio_color checked"> Gold
+			  </label>
+			  <label class="btn btn-light">
+			    <input type="radio" name="radio_color"> Black
+			  </label>
+			</div> 
+		</div>
+	</div> <!-- row.// -->
+	<div class="row">
+		<div class="item-option-select">
+			<h6>Select Size</h6>
+			<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
+			  <label class="btn btn-light">
+			    <input type="radio" name="radio_color"> S
+			  </label>
+			  <label class="btn btn-light active">
+			    <input type="radio" name="radio_color" checked> M
+			  </label>
+			  <label class="btn btn-light">
+			    <input type="radio" name="radio_color"> L
+			  </label>
+			  <label class="btn btn-light">
+			    <input type="radio" name="radio_color"> XL
+			  </label>
+			</div> 
+		</div>
+	</div> <!-- row.// -->
+	<hr>
+
+	{% if single_product.stock <= 0 %}
+	<h5 class = "text-danger">Out of Stock </h5>
+	{% else %}
+	<a href="{% url 'add_cart' product.id %}" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+</article> <!-- product-info-aside .// -->
+		</main> <!-- col.// -->
+	</div> <!-- row.// -->
+</div> <!-- card.// -->
+<!-- ============================ COMPONENT 1 END .// ================================= -->
+
+<br>
+
+<div class="row">
+			<div class="col-md-9">
+
+	<header class="section-heading">
+		<h3>Customer Reviews </h3>  
+		
+	</header>
+
+	<article class="box mb-3">
+		<div class="icontext w-100">
+			<img src="{% static 'images/avatars/avatar1.jpg' %}" class="img-xs icon rounded-circle">
+			<div class="text">
+				<span class="date text-muted float-md-right">24.04.2020 </span>  
+				<h6 class="mb-1">Mike John </h6>
+				
+			</div>
+		</div> <!-- icontext.// -->
+		<div class="mt-3">
+			<p>
+				Dummy comment Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip
+			</p>	
+		</div>
+	</article>
+
+	
+
+	</div> <!-- col.// -->
+</div> <!-- row.// -->
+
+
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+</body>
+</html>
+
+
+
+
+
+./cart.html
+
+<!DOCTYPE HTML>
+{% load static %}
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Language </a>
+		    <ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">English</a></li>
+				<li><a class="dropdown-item" href="#">Arabic</a></li>
+				<li><a class="dropdown-item" href="#">Russian </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+			<ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">EUR</a></li>
+				<li><a class="dropdown-item" href="#">AED</a></li>
+				<li><a class="dropdown-item" href="#">RUBL </a></li>
+		    </ul>
+		</li>
+    </ul>
+    <ul class="navbar-nav">
+		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+	</ul> <!-- list-inline //  -->
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="./" class="brand-wrap">
+			<img class="logo" src="{% static 'images/logo.png' %}">
+		</a> <!-- brand-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
+				<a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
+				<a class="dropdown-item" href="#">Auto / Transportation</a>
+				<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
+				<a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
+				<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="./store.html" class="btn btn-outline-primary">Products</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					<div class="widget-header">
+						<small class="title text-muted">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'signin' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register' %}"> Register</a>
+						</div>
+					</div>
+					<a href="./cart.html" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">0</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+
+</header> <!-- section-header.// -->
+
+
+<section class="section-content padding-y bg">
+<div class="container">
+
+<!-- ============================ COMPONENT 1 ================================= -->
+
+{% if not cart_items %}
+<h2 class="text-center"> Your Shopping Cart is empty !!! </h2>
+<br>
+<div class = "text-center">
+	<a href = "{% url 'productlist' %}" class = "btn btn-primary">Continue Shopping </a>
+</div>
+
+{% else %}
+
+<div class="row">
+	<aside class="col-lg-9">
+<div class="card">
+<table class="table table-borderless table-shopping-cart">
+<thead class="text-muted">
+<tr class="small text-uppercase">
+  <th scope="col">Product</th>
+  <th scope="col" width="120">Quantity</th>
+  <th scope="col" width="120">Price</th>
+  <th scope="col" class="text-right" width="200"> </th>
+</tr>
+</thead>
+<tbody>
+	{% for cart_item in cart_items %}
+<tr>
+	<td>
+		<figure class="itemside align-items-center">
+			<div class="aside"><img src="{{ cart_item.product.image.url }}" class="img-sm"></div>
+			<figcaption class="info">
+				<a href="{{ cart_item.product.get.url }}" class="title text-dark">{{ cart_item.product.product_name }}</a>
+				<p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+			</figcaption>
+		</figure>
+	</td>
+	<td> 
+		<!-- col.// -->
+					<div class="col"> 
+						<div class="input-group input-spinner">
+							<div class="input-group-prepend">
+							<a href="{% url 'remove_cart' cart_item.product.id %}" class="btn btn-light" type="button" id="button-minus"> <i class="fa fa-minus"></i> </a>
+							</div>
+							<input type="text" class="form-control"  value="{{ cart_item.quantity }}">
+							<div class="input-group-append">
+							<a href ="{% url 'add_cart' cart_item.product_id %}" class="btn btn-light" type="button" id="button-minus"> <i class="fa fa-plus"></i> </a>
+							</div>
+						</div> <!-- input-group.// -->
+					</div> <!-- col.// -->
+	</td>
+	<td> 
+		<div class="price-wrap"> 
+			<var class="price">{{ cart_item.sub_total }}</var> 
+			<small class="text-muted"> ${{ cart_item.product.product_price}} </small> 
+		</div> <!-- price-wrap .// -->
+	</td>
+	<td class="text-right"> 
+	<a href="{% url 'remove_cart_item' cart_item.product_id %}" class="btn btn-danger"> Remove </a>
+	</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+</table>
+
+</div> <!-- card.// -->
+
+	</aside> <!-- col.// -->
+	<aside class="col-lg-3">
+
+		<div class="card">
+		<div class="card-body">
+			<dl class="dlist-align">
+			  <dt>Total price:</dt>
+			  <dd class="text-right">${{ total}}</dd>
+			</dl>
+			<dl class="dlist-align">
+			  <dt>Tax:</dt>
+			  <dd class="text-right"> {{ tax }}</dd>
+			</dl>
+			<dl class="dlist-align">
+			  <dt>Grand Total:</dt>
+			  <dd class="text-right text-dark b"><strong>{{ grand_total }}</strong></dd>
+			</dl>
+			<hr>
+			<p class="text-center mb-3">
+				<img src="{% static 'images/misc/payments.png' %}" height="26">
+			</p>
+			<a href="{% url 'checkout'  %}" class="btn btn-primary btn-block"> Checkout </a>
+			<a href="{% url 'productlist'  %}" class="btn btn-light btn-block">Continue Shopping</a>
+		</div> <!-- card-body.// -->
+		</div> <!-- card.// -->
+
+</aside> <!-- col.// -->
+
+
+</div> <!-- row.// -->
+{% endif %}
+<!-- ============================ COMPONENT 1 END .// ================================= -->
+
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+checkout.html
+
+
+<!DOCTYPE HTML>
+
+{% load static %}
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="max-age=604800" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>GreatKart | One of the Biggest Online Shopping Platform</title>
+
+<link href="{% static 'images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-2.0.0.min.js' %}" type="text/javascript"></script>
+
+<!-- Bootstrap4 files-->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}" type="text/javascript"></script>
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+
+<!-- Font awesome 5 -->
+<link href="{% static 'fonts/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+
+<!-- custom style -->
+<link href="{% static 'css/ui.css' %}" rel="stylesheet" type="text/css"/>
+<link href="{% static 'css/responsive.css' %}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+<!-- custom javascript -->
+<script src="{% static 'js/script.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+/// some script
+
+// jquery ready start
+$(document).ready(function() {
+	// jQuery code
+
+}); 
+// jquery end
+</script>
+
+</head>
+<body>
+
+
+<header class="section-header">
+<nav class="navbar p-md-0 navbar-expand-sm navbar-light border-bottom">
+<div class="container">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTop4">
+    <ul class="navbar-nav mr-auto">
+    	<li class="nav-item dropdown">
+		 	<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Language </a>
+		    <ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">English</a></li>
+				<li><a class="dropdown-item" href="#">Arabic</a></li>
+				<li><a class="dropdown-item" href="#">Russian </a></li>
+		    </ul>
+		</li>
+		<li class="nav-item dropdown">
+			<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+			<ul class="dropdown-menu small">
+				<li><a class="dropdown-item" href="#">EUR</a></li>
+				<li><a class="dropdown-item" href="#">AED</a></li>
+				<li><a class="dropdown-item" href="#">RUBL </a></li>
+		    </ul>
+		</li>
+    </ul>
+    <ul class="navbar-nav">
+		<li><a href="#" class="nav-link"> <i class="fa fa-envelope"></i> Email </a></li>
+		<li><a href="#" class="nav-link"> <i class="fa fa-phone"></i> Call us </a></li>
+	</ul> <!-- list-inline //  -->
+  </div> <!-- navbar-collapse .// -->
+</div> <!-- container //  -->
+</nav>
+
+<section class="header-main border-bottom">
+	<div class="container">
+<div class="row align-items-center">
+	<div class="col-lg-2 col-md-3 col-6">
+		<a href="./" class="brand-wrap">
+			<img class="logo" src="{% static 'images/logo.png' %}">
+		</a> <!-- brand-wrap.// -->
+	</div>
+	<div class="col-lg col-sm col-md col-6 flex-grow-0">
+		<div class="category-wrap dropdown d-inline-block float-right">
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
+				<i class="fa fa-bars"></i> All category 
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
+				<a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
+				<a class="dropdown-item" href="#">Auto / Transportation</a>
+				<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
+				<a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
+				<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
+			</div>
+		</div>  <!-- category-wrap.// -->
+	</div> <!-- col.// -->
+	<a href="./store.html" class="btn btn-outline-primary">Products</a>
+	<div class="col-lg  col-md-6 col-sm-12 col">
+		<form action="#" class="search">
+			<div class="input-group w-100">
+			    <input type="text" class="form-control" style="width:60%;" placeholder="Search">
+			    
+			    <div class="input-group-append">
+			      <button class="btn btn-primary" type="submit">
+			        <i class="fa fa-search"></i>
+			      </button>
+			    </div>
+		    </div>
+		</form> <!-- search-wrap .end// -->
+	</div> <!-- col.// -->
+	<div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
+				<div class="d-flex justify-content-end mb-3 mb-lg-0">
+					<div class="widget-header">
+						<small class="title text-muted">Welcome guest!</small>
+						<div> 
+							<a href="{% url 'signin' %}">Sign in</a> <span class="dark-transp"> | </span>
+							<a href="{% url 'register' %}"> Register</a>
+						</div>
+					</div>
+					<a href="./cart.html" class="widget-header pl-3 ml-3">
+						<div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
+						<span class="badge badge-pill badge-danger notify">0</span>
+					</a>
+				</div> <!-- widgets-wrap.// -->
+			</div> <!-- col.// -->
+</div> <!-- row.// -->
+	</div> <!-- container.// -->
+</section> <!-- header-main .// -->
+
+
+
+</header> <!-- section-header.// -->
+
+
+<section class="section-content padding-y bg">
+<div class="container">
+
+<!-- ============================ COMPONENT 1 ================================= -->
+
+<div class="container">
+	<div class="row">
+	  <!-- Billing Address Section -->
+	  <aside class="col-lg-6">
+		<div class="card">
+		  <div class="card-body">
+			<h4 class="card-title mb-4">Billing Address</h4>
+			<form action="{% url 'placeorder' %}" method ='POST'>
+				{% csrf_token %}
+			  <div class="form-row">
+				<div class="col form-group">
+				  <label for="">First Name</label>
+				  <input type="text" name="first-name" class="form-control" required>
+				</div>
+				<div class="col form-group">
+				  <label for="">Last Name</label>
+				  <input type="text" name="last-name" class="form-control" required>
+				</div>
+			  </div>
+			  <div class="form-row">
+				<div class="col form-group">
+				  <label for="">Email</label>
+				  <input type="text" name="email" class="form-control" required>
+				</div>
+				<div class="col form-group">
+				  <label for="">Phone Number</label>
+				  <input type="text" name="phone" class="form-control" required>
+				</div>
+			  </div>
+			  <div class="form-row">
+				<div class="col form-group">
+				  <label for="">Address 1</label>
+				  <input type="text" name="address_line_1" class="form-control" required>
+				</div>
+				<div class="col form-group">
+				  <label for="">Address 2</label>
+				  <input type="text" name="address_line_2" class="form-control">
+				</div>
+			  </div>
+			  <div class="form-row">
+				<div class="col form-group">
+				  <label for="">City</label>
+				  <input type="text" name="city" class="form-control" required>
+				</div>
+				<div class="col form-group">
+				  <label for="">State</label>
+				  <input type="text" name="state" class="form-control" required>
+				</div>
+				<div class="col form-group">
+					<label for="">Country</label>
+					<input type="text" name="country" class="form-control" required>
+				  </div>
+			  </div>
+			  <div class="form-row">
+				<div class="col form-group">
+				  <label for="">Order Note</label>
+				  <input type="text" name="order_note" class="form-control" required>
+				</div>
+			</div>
+			</form>
+		  </div>
+		</div>
+	  </aside>
+	  <!-- End Billing Address Section -->
+  
+	  <!-- Product and Order Section -->
+	  <aside class="col-lg-6">
+		<div class="card">
+		  <div class="card-body">
+			<table class="table table-borderless table-shopping-cart">
+			  <thead class="text-muted">
+				<tr class="small text-uppercase">
+				  <th scope="col">Product</th>
+				  <th scope="col" width="120">Quantity</th>
+				  <th scope="col" width="120">Price</th>
+				  <th scope="col" class="text-right" width="200"></th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{% for cart_item in cart_items %}
+				<tr>
+				  <td>
+					<figure class="itemside align-items-center">
+					  <div class="aside"><img src="{{ cart_item.product.image.url }}" class="img-sm"></div>
+					  <figcaption class="info">
+						<a href="{{ cart_item.product.get.url }}" class="title text-dark">{{ cart_item.product.product_name }}</a>
+						<p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+					  </figcaption>
+					</figure>
+				  </td>
+				  <td>
+					<label for = "">{{ cart_item.quantity }}</label>
+				  </td>
+				  <td>
+					<div class="price-wrap">
+					  <var class="price">{{ cart_item.sub_total }}</var>
+					  <small class="text-muted"> ${{ cart_item.product.product_price }} </small>
+					</div>
+				  </td>
+				</tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+			<a href="{% url 'placeorder' %}" class="btn btn-primary btn-block">Place Order</a>
+			<a href="{% url 'productlist' %}" class="btn btn-light btn-block">Continue Shopping</a>
+		  </div>
+		</div>
+	  </aside>
+	  <!-- End Product and Order Section -->
+	</div>
+  </div>
+  
+
+<!-- ============================ COMPONENT 1 END .// ================================= -->
+
+</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+</body>
+</html>

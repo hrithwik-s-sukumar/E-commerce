@@ -15,25 +15,30 @@ def _cart_id(request):
 
     cart = request.session.session_key
     if not cart:
-        request.session.create()  # Ensure the session is created
-        cart = request.session.session_key  # Retrieve the session key after creation
+        cart = request.session.create()  # Ensure the session is created
     return cart
 
 
 def add_cart(request, product_id):
 
-    product = get_object_or_404(Product, id=product_id)
-    cart_id = _cart_id(request)  # Get or create session's cart_id
+    product = Product.objects.get(id=product_id)
 
-    # Use get_or_create to handle cart creation
-    cart, created = Cart.objects.get_or_create(cart_id=cart_id)
+    try:
+        cart=Cart.objects.get(cart_id = _cart_id(request))
 
-    # Try to find the cart item, or create it if it doesn't exist
-    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
-    if not created:
-        cart_item.quantity += 1
-    cart_item.save()
+    except Cart.DoesNotExist:
+        cart = Cart.objects.create(cart_id =_cart_id(request))
+        cart.save()    
 
+    try:
+        cart_item = CartItem.objects.get(product=product,cart=cart)
+        cart_item.quantity +=1
+        cart_item.save()
+
+    except CartItem.DoesNotExist:
+        cart_item = CartItem.objects.create(product=product,quantity=1,cart=cart)
+        cart_item.save()      
+   
     return redirect('cart')
 
 
@@ -129,3 +134,23 @@ def checkout_page(request):
     return render(request, 'cart/checkout.html', context)
 
 
+
+
+
+
+
+# def add_cart(request, product_id):
+
+#     product = get_object_or_404(Product, id=product_id)
+#     cart_id = _cart_id(request)  # Get or create session's cart_id
+
+#     # Use get_or_create to handle cart creation
+#     cart, created = Cart.objects.get_or_create(cart_id=cart_id)
+
+#     # Try to find the cart item, or create it if it doesn't exist
+#     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+#     if not created:
+#         cart_item.quantity += 1
+#     cart_item.save()
+
+#     return redirect('cart')

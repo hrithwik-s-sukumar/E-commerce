@@ -1,5 +1,7 @@
 from django.db import models
 from category.models import Category
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -16,10 +18,12 @@ class Product(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
 
 
+    def get_url(self):
+        return reverse('product_detail',args=[self.category.slug,self.slug])
+
     def _str_(self):
         return self.product_name
     
-
     def save(self, *args, **kwargs):
         # Example check: If stock is greater than 0, set is_available to True
         if self.stock > 0:

@@ -1,6 +1,7 @@
 from django.db import models
 from products.models import Product
 from accounts.models import Account
+from django.urls import reverse
 
 # Create your models here.
 class Cart(models.Model):
