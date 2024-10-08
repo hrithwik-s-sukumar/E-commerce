@@ -22,7 +22,7 @@
 			</aside>
 			<main class="col-md-6 border-left">
 
-    <form action="">
+    <form action="{% url 'add_cart' single_product.id %}" method="GET">
 	<article class="content-body">
 	
 	<h2 class="title">{{ single_product.product_name }}</h2>
@@ -34,42 +34,25 @@
 	<p>Description: {{ single_product.description }}</p>
 	
 	<hr>
-		<div class="row">
+		{% comment %} <div class="row">
 			<div class="item-option-select">
 				<h6>Choose Color</h6>
-				<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
-				  <label class="btn btn-light">
-					<input type="radio" name="radio_color"> Silver
-				  </label>
-				  <label class="btn btn-light">
-					<input type="radio" name="radio_color" > Gray
-				  </label>
-				  <label class="btn btn-light active">
-					<input type="radio" name="radio_color checked"> Gold
-				  </label>
-				  <label class="btn btn-light">
-					<input type="radio" name="radio_color"> Black
-				  </label>
-				</div> 
+				<select name ="Color" class ="form-control" >
+					<option value = "red">Red</option>
+					<option value = "yellow">Yellow</option>
+					<option value = "green">Green</option>
+				</select>
 			</div>
-		</div> <!-- row.// -->
+		</div> <!-- row.// --> {% endcomment %}
 		<div class="row">
 			<div class="item-option-select">
 				<h6>Select Size</h6>
-				<div class="btn-group btn-group-sm btn-group-toggle" data-toggle="buttons">
-				  <label class="btn btn-light">
-					<input type="radio" name="radio_color"> S
-				  </label>
-				  <label class="btn btn-light active">
-					<input type="radio" name="radio_color" checked> M
-				  </label>
-				  <label class="btn btn-light">
-					<input type="radio" name="radio_color"> L
-				  </label>
-				  <label class="btn btn-light">
-					<input type="radio" name="radio_color"> XL
-				  </label>
-				</div> 
+				<select name ="Size" class ="form-control">
+					<option value = "small">7</option>
+					<option value = "medium">8</option>
+					<option value = "large">9</option>
+				</select>
+			
 			</div>
 		</div> <!-- row.// -->
 		<hr>
@@ -86,13 +69,14 @@
 			<a href="{% url 'cart'   %}" class="btn  btn-outline-primary"> <span class="text">View cart</span> <i class="fas fa-eye"></i>  </a>
 			{% else %}
 
-			<a href="{% url 'add_cart' single_product.id %}" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+			<button type ="submit" class="btn  btn-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </button>
 
 			{% endif %}
 
 		{% endif %}
 		
 	</article> <!-- product-info-aside .// -->
+    </form>
 
 
 			</main> <!-- col.// -->

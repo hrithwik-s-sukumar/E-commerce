@@ -7,7 +7,16 @@
 
 <section class="section-pagetop bg">
 <div class="container">
-	<h2 class="title-page">Our Products</h2>
+
+	{% if 'search' in request.path %}
+
+	<h2 class="title-page">Search Result</h2>
+
+	{% else %}
+
+	<h2 class="title-page"> Products</h2>
+
+	{% endif %}
 	
 </div> <!-- container //  -->
 </section>
