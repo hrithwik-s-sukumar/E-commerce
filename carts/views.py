@@ -44,10 +44,12 @@ def add_cart(request, product_id):
 
 def user_cart(request):
 
-    cart_items = None
-    total = 0
-    quantity = 0
-    cart_id = _cart_id(request)
+    cart_items  = None
+    total       = 0
+    tax         = 0
+    quantity    = 0
+    grand_total = 0
+    cart_id     = _cart_id(request)
     
     try:
         cart = Cart.objects.get(cart_id=cart_id)

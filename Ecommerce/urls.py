@@ -18,16 +18,19 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from products import views
 
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('', include('accounts.urls')),
-    path('', include('adminpanel.urls')),
-    path('', include('carts.urls')),
-    path('', include('products.urls')),
-    path('', include('category.urls')),
-    path('', include('orders.urls')),
+    path('',views.index,name='home'),
+    path('accounts/', include('accounts.urls')),
+    path('adminpanel/', include('adminpanel.urls')),
+    path('products/', include('products.urls')),
+    path('category/', include('category.urls')),
+    path('carts/', include('carts.urls')),
+    path('orders/', include('orders.urls')),
+   
 
 ]
 

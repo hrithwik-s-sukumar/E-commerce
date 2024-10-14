@@ -3,7 +3,6 @@ from.forms import RegistrationForm
 from. models import Account
 from django.contrib import messages,auth
 from django.contrib.auth.decorators import login_required
-
 from carts.views import _cart_id
 from carts.models import Cart,CartItem
 

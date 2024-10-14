@@ -6,7 +6,7 @@ from accounts.models import Account
 # Create your models here.
 class Payment(models.Model):
     user           = models.ForeignKey(Account, on_delete=models.CASCADE)
-    payment_id     = models.CharField( max_length=100)
+    payment_id     = models.CharField(max_length=100)
     payment_method = models.CharField(max_length=100)
     amount_paid    = models.CharField(max_length=100)
     status         = models.CharField(max_length=100)
