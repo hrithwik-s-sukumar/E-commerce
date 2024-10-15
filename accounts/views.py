@@ -5,30 +5,94 @@ from django.contrib import messages,auth
 from django.contrib.auth.decorators import login_required
 from carts.views import _cart_id
 from carts.models import Cart,CartItem
+import random
+from django.core.mail import send_mail
 
 
 # Create your views here.
 def user_register(request):
     if request.method == 'POST':
-       form = RegistrationForm(request.POST)
-       if form.is_valid():
-           first_name = form.cleaned_data['first_name']
-           last_name = form.cleaned_data['last_name']
-           phone_number = form.cleaned_data['phone_number']
-           email = form.cleaned_data['email']
-           password = form.cleaned_data['password']
-           username = email.split("@")[0]
-           user = Account.objects.create_user(first_name=first_name,last_name=last_name,email=email,password=password,username=username)
-           user.phone_number = phone_number
-           user.save()
-           messages.success(request,'Registration is successful')
-           return render(request,'register.html')
+        form = RegistrationForm(request.POST)
+        
+        if form.is_valid():
+            # Extracting cleaned data from form
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            phone_number = form.cleaned_data['phone_number']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+
+            # Generate username from email
+            username = email.split("@")[0]
+
+            # Create a new user account
+            user = Account.objects.create_user(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                password=password,
+                username=username
+            )
+
+            # Save additional phone number to user profile
+            user.phone_number = phone_number
+            user.save()
+
+            # Generate OTP and save it in session
+            otp = random.randint(1000, 9999)
+            request.session['otp'] = otp
+            request.session['email'] = email
+
+            # Send OTP email for verification
+            send_mail(
+                'Verify your email',
+                f'Your OTP for verification is {otp}',
+                settings.EMAIL_HOST_USER,
+                [email],
+                fail_silently=False
+            )
+
+            # Notify user and render OTP verification page
+            messages.success(request, "OTP has been sent to your email for verification.")
+            return render(request, 'verify.html')
+
+        else:
+            # If form is invalid, display error message
+            messages.error(request, "Something went wrong. Please check your inputs.")
+
     else:
+        # If the request method is not POST, show an empty registration form
         form = RegistrationForm()
+
+    # Context to render the registration page
     context = {
-            'form': form
-        }       
-    return render(request,'register.html',context)
+        'form': form
+    }
+
+    return render(request, 'register.html', context)
+
+
+def verify(request):
+    if request.method == 'POST':
+        entered_otp = request.POST.get('otp') 
+        stored_otp = request.session.get('otp')  
+        stored_email = request.session.get('email')
+
+        if str(stored_otp) == entered_otp:
+            user = Account.objects.get(email=stored_email)
+            user.is_active = True 
+            user.save()
+
+            del request.session['otp']
+            del request.session['email']
+
+            messages.success(request, "OTP verified successfully! You can now log in.")
+            return redirect('login')
+        else:
+            messages.error(request, "Invalid OTP. Please try again.")
+
+    return render(request, 'accounts/verify.html')
+
 
 def user_login(request):
     if request.method == 'POST':
