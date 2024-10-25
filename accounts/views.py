@@ -111,8 +111,7 @@ def user_login(request):
                 cart = Cart.objects.get(cart_id=_cart_id(request))
                 
                 # Check if any cart items exist in the cart
-                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists()
-                
+                is_cart_item_exists = CartItem.objects.filter(cart=cart).exists() 
                 if is_cart_item_exists:
                     cart_items = CartItem.objects.filter(cart=cart)
                     print('cart_item')
@@ -137,8 +136,6 @@ def user_login(request):
             print("Authentication failed")
             messages.error(request, 'Invalid credentials')
             return redirect('signin')
-
-    # If request method is GET, render the login form
     return render(request, 'signin.html')
 
 
