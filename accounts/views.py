@@ -7,6 +7,8 @@ from carts.views import _cart_id
 from carts.models import Cart,CartItem
 import random
 from django.core.mail import send_mail
+from django.conf import settings
+
 
 
 # Create your views here.
@@ -36,7 +38,7 @@ def user_register(request):
 
             # Save additional phone number to user profile
             user.phone_number = phone_number
-            user.save()
+        
 
             # Generate OTP and save it in session
             otp = random.randint(1000, 9999)
@@ -72,7 +74,8 @@ def user_register(request):
     return render(request, 'register.html', context)
 
 
-def verify(request):
+def verify_otp(request):
+    
     if request.method == 'POST':
         entered_otp = request.POST.get('otp') 
         stored_otp = request.session.get('otp')  
@@ -91,7 +94,7 @@ def verify(request):
         else:
             messages.error(request, "Invalid OTP. Please try again.")
 
-    return render(request, 'accounts/verify.html')
+    return render(request, 'verify.html')
 
 
 def user_login(request):
