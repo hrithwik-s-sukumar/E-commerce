@@ -23,23 +23,19 @@ def user_register(request):
             phone_number = form.cleaned_data['phone_number']
             email = form.cleaned_data['email']
             password = form.cleaned_data['password']
-
             # Generate username from email
             username = email.split("@")[0]
 
             # Create a new user account
-            user = Account.objects.create_user(
-                first_name=first_name,
-                last_name=last_name,
-                email=email,
-                password=password,
-                username=username
-            )
-
-            # Save additional phone number to user profile
-            user.phone_number = phone_number
+            request.session['user_data'] = {
+                'first_name': first_name,
+                'last_name': last_name,
+                'phone_number': phone_number,
+                'email': email,
+                'username': username,
+                'password': password  
+            }
         
-
             # Generate OTP and save it in session
             otp = random.randint(1000, 9999)
             request.session['otp'] = otp
